@@ -9,9 +9,6 @@ public class Button_One : MonoBehaviour
     public Button ButtonOne;
 
 
-
-
-
     // Use this for initialization
     void Start()
     {
