@@ -1,7 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs.meta
 guid: 1a501970233427348a66a1468201c375
 folderAsset: yes
 timeCreated: 1484950897
+=======
+guid: 2baa112c85009c24eac8b7b0e01754f6
+folderAsset: yes
+timeCreated: 1484951014
+>>>>>>> acedbfcb64713710ed2e6feb4148aac8b41fee5a:Assets/Prefabs.meta
 licenseType: Free
 DefaultImporter:
   userData: 
