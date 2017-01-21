@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class DamsScript : MonoBehaviour
 {
-    float HealthTime;
+    public float HealthTime = 100;
     void Start()
-    {;
+    {
+
     }
 
     // Update is called once per frame

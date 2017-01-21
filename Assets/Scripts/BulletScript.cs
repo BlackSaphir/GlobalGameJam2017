@@ -7,10 +7,12 @@ public class BulletScript : MonoBehaviour {
     private Transform target;
 
     public float speed = 50f;
+    private float damage;
 
-	public void Seek(Transform _target)
+	public void Seek(Transform _target, float _damage)
     {
         target = _target;
+        damage = _damage;
     }
 	
 	// Update is called once per frame
@@ -36,6 +38,7 @@ public class BulletScript : MonoBehaviour {
 
     void HitTarget()
     {
+        target.GetComponent<Minion>().health -= damage;
         Destroy(gameObject);
     }
 }

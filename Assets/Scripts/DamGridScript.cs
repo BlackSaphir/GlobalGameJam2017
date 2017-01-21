@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridScript : MonoBehaviour {
-
+public class DamGridScript : MonoBehaviour
+{
     public Color hoverColor;
 
-    private GameObject turret;
+    private GameObject dam;
+    public GameObject prefab;
 
     private SpriteRenderer myRenderer;
     private Color normalColor;
@@ -19,17 +20,17 @@ public class GridScript : MonoBehaviour {
 
     void OnMouseDown()
     {
-        if(turret != null)
+        if (dam != null)
         {
             Debug.Log("Can't build there!");
             return;
         }
 
-        GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
-        turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
+        GameObject damToBuild = BuildManager.instance.GetDam();
+        dam = (GameObject)Instantiate(damToBuild, transform.position, transform.rotation);
     }
 
-	void OnMouseEnter()
+    void OnMouseEnter()
     {
         myRenderer.color = hoverColor;
     }
@@ -39,3 +40,4 @@ public class GridScript : MonoBehaviour {
         myRenderer.color = normalColor;
     }
 }
+
