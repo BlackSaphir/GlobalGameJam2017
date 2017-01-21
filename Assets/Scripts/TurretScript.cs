@@ -4,10 +4,21 @@ using UnityEngine;
 
 public class TurretScript : MonoBehaviour {
 
-    public Transform target;
-    public float range;
+    private Transform target;
 
+    [Header("Attributes")]
+    public float range;
+    public float fireRate = 1f;
+    public float damage;
+
+    private float fireCooldown = 0f;
+
+    [Header("Unity Setup Fields")]
     public string enemyTag = "Enemy";
+    public GameObject bulletPrefab;
+    public Transform firePoint;
+
+    
 
 	// Use this for initialization
 	void Start ()
@@ -24,6 +35,14 @@ public class TurretScript : MonoBehaviour {
         Vector2 dir = target.position - transform.position;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+        if(fireCooldown <= 0)
+        {
+            Shoot();
+            fireCooldown = 1f / fireRate;
+        }
+
+        fireCooldown -= Time.deltaTime;
 	}
 
     void UpdateTarget()
@@ -50,6 +69,15 @@ public class TurretScript : MonoBehaviour {
         {
             target = null;
         }
+    }
+
+    void Shoot()
+    {
+        GameObject bulletTemp = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        BulletScript bullet = bulletTemp.GetComponent<BulletScript>();
+
+        if (bullet != null)
+            bullet.Seek(target);
     }
 
     void OnDrawGizmosSelected()
