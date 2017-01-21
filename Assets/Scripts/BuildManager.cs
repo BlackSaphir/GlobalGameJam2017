@@ -18,6 +18,8 @@ public class BuildManager : MonoBehaviour {
 
     public GameObject standardTurret;
 
+    public GameObject DamPrefab;
+
     private GameObject buildTurret;
 
     void Start()
@@ -28,5 +30,10 @@ public class BuildManager : MonoBehaviour {
     public GameObject GetTurretToBuild()
     {
         return buildTurret;
+    }
+
+    public GameObject GetDam()
+    {
+        return DamPrefab;
     }
 }

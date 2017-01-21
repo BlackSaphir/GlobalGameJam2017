@@ -77,7 +77,7 @@ public class TurretScript : MonoBehaviour {
         BulletScript bullet = bulletTemp.GetComponent<BulletScript>();
 
         if (bullet != null)
-            bullet.Seek(target);
+            bullet.Seek(target, damage);
     }
 
     void OnDrawGizmosSelected()
