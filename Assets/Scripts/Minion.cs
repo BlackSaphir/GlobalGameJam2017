@@ -27,7 +27,6 @@ public class Minion : MonoBehaviour
             alive = false;
             Destroy(this);
         }
-
     }
 
     public void MoveTo()

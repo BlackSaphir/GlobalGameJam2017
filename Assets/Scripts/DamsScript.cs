@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class DamsScript : MonoBehaviour
 {
-    float Health;
+    float HealthTime;
     void Start()
-    {
-        Health = 100;
+    {;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Health <= 0)
+        if (HealthTime <= 0)
         {
             Destroy(this.gameObject);
         }
@@ -22,7 +21,7 @@ public class DamsScript : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Health -= 5;
+            HealthTime -= 5;
         }
     }
 }
