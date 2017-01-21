@@ -14,7 +14,12 @@ public class GameManager : MonoBehaviour
     public int Waves;
     public int WaveLength;
     public Minion Minion;
-    public GameObject MinionPre;
+    private GameObject MinionPre;
+    public GameObject MinionFish;
+    public GameObject MinionTurtle;
+    public GameObject MinionJellyFish;
+    public GameObject MinionLaserShark;
+    
     public GameObject Lane;
     public float SpawnTimer;
 
@@ -36,7 +41,7 @@ public class GameManager : MonoBehaviour
         Lane2Timer = 0;
         Lane3Timer = 0;
         Lane4Timer = 0;
-
+        MinionPre = MinionFish;
         PlayTime = 0.0f;
         Minion = gameObject.GetComponent<Minion>();
     }
@@ -44,7 +49,10 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        WaveSpawnLane1();        
+        WaveSpawnLane1();
+        //WaveSpawnLane2();
+        //WaveSpawnLane3();
+        //WaveSpawnLane4();
         Lane1Timer += Time.deltaTime;
         Lane2Timer += Time.deltaTime;
         Lane3Timer += Time.deltaTime;
@@ -52,16 +60,28 @@ public class GameManager : MonoBehaviour
         
         PlayTime += Time.deltaTime;
         PlayTime = Mathf.Round(PlayTime * 100.0f) / 100.0f;
-        //if (Minion.alive == false)
-        //{
-        //    money += Minion.money;
-        //}
+
+        if (PlayTime > 40.0f)
+        {
+            WaveSpawnLane2();
+        }
+
+        if (PlayTime > 90.0f)
+        {
+            WaveSpawnLane3();
+        }
+
+        if (PlayTime > 150.0f)
+        {
+            WaveSpawnLane4();
+        }
     }
 
     void WaveSpawnLane1()
     {
+        MinionPre = MinionFish;
         Lane = GameObject.Find("Lane1");        
-        if (Lane1Timer > 1.0f && MinionLane1Count < WaveLength)
+        if (Lane1Timer > 1.5f && MinionLane1Count < WaveLength)
         {
             GameObject temp = (GameObject)Instantiate(MinionPre, Lane.transform.position, Lane.transform.rotation);
             temp.GetComponent<Minion>().Lane = GameObject.Find("Lane1");
@@ -72,8 +92,9 @@ public class GameManager : MonoBehaviour
 
     void WaveSpawnLane2()
     {
+        MinionPre = MinionTurtle;
         Lane = GameObject.Find("Lane2");        
-        if (Lane2Timer > 1.0f && MinionLane2Count < WaveLength)
+        if (Lane2Timer > 2.0f && MinionLane2Count < WaveLength)
         {
             GameObject temp = (GameObject)Instantiate(MinionPre, Lane.transform.position, Lane.transform.rotation);
             temp.GetComponent<Minion>().Lane = GameObject.Find("Lane2");
@@ -84,8 +105,9 @@ public class GameManager : MonoBehaviour
 
     void WaveSpawnLane3()
     {
+        MinionPre = MinionJellyFish;
         Lane = GameObject.Find("Lane3");
-        if (Lane3Timer > 1.0f && MinionLane3Count < WaveLength)
+        if (Lane3Timer > 1.5f && MinionLane3Count < WaveLength)
         {
             GameObject temp = (GameObject)Instantiate(MinionPre, Lane.transform.position, Lane.transform.rotation);
             temp.GetComponent<Minion>().Lane = GameObject.Find("Lane3");
@@ -96,8 +118,9 @@ public class GameManager : MonoBehaviour
 
     void WaveSpawnLane4()
     {
+        MinionPre = MinionLaserShark;
         Lane = GameObject.Find("Lane4");
-        if (Lane4Timer > 1.0f && MinionLane4Count < WaveLength)
+        if (Lane4Timer > 1.5f && MinionLane4Count < WaveLength)
         {
             GameObject temp = (GameObject)Instantiate(MinionPre, Lane.transform.position, Lane.transform.rotation);
             temp.GetComponent<Minion>().Lane = GameObject.Find("Lane4");
