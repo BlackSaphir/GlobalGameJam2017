@@ -15,8 +15,7 @@ public class Minion : MonoBehaviour
     public GameObject Lane;
     // Use this for initialization
     void Start()
-    {
-        health = 100;
+    {       
         gameManager = FindObjectOfType<GameManager>();
         this.tag = "Enemy";
         alive = true;
