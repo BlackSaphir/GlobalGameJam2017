@@ -5,9 +5,11 @@ using UnityEngine;
 public class DamsScript : MonoBehaviour
 {
     public float HealthTime = 100;
+    public bool damBroken;
+
     void Start()
     {
-
+        damBroken = false;
     }
 
     // Update is called once per frame
@@ -16,6 +18,7 @@ public class DamsScript : MonoBehaviour
         if (HealthTime <= 0)
         {
             Destroy(this.gameObject);
+            damBroken = true;
         }
     }
     void OnCollisionEnter2D(Collision2D other)
