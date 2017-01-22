@@ -48,4 +48,12 @@ public class Minion : MonoBehaviour
         transform.position = Vector2.MoveTowards(transform.position, Waypoints[index].transform.position, speed);
     }
 
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Base")
+        {
+            Destroy(gameObject);
+        }
+    }
+
 }

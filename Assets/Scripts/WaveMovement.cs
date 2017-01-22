@@ -33,6 +33,6 @@ public class WaveMovement : MonoBehaviour
         {
             index++;
         }
-        transform.position = Vector2.MoveTowards(transform.position, Waypoints[index].transform.position, 0.1f);
+        transform.position = Vector2.MoveTowards(transform.position, Waypoints[index].transform.position, speed);
     }
 }

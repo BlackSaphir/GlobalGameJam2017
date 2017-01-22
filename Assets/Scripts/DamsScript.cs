@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class DamsScript : MonoBehaviour
 {
-    public float HealthTime = 100;
+    public float HealthTime = 100.0f;
     public bool damBroken;
 
+    public Gif gif;
+
     void Start()
-    {
+    {        
         damBroken = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        HealthTime -= Time.deltaTime;
         if (HealthTime <= 0)
         {
-            Destroy(this.gameObject);
-            damBroken = true;
+            gif.kacke = false;
+            Destroy(gameObject);
         }
-    }
-    void OnCollisionEnter2D(Collision2D other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            HealthTime -= 5;
-        }
-    }
+    }    
 }

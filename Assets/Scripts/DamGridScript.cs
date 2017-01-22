@@ -6,16 +6,30 @@ public class DamGridScript : MonoBehaviour
 {
     public Color hoverColor;
 
-    private GameObject dam;
+    public GameObject dam;
     public GameObject prefab;
+    public WaveMovement waveMovment;
 
     private SpriteRenderer myRenderer;
     private Color normalColor;
+
+    public Gif gif;
 
     void Start()
     {
         myRenderer = GetComponent<SpriteRenderer>();
         normalColor = myRenderer.color;
+        GameObject damToBuild = BuildManager.instance.GetDam();
+        dam = (GameObject)Instantiate(prefab, transform.position, transform.rotation);
+    }
+
+    void Update()
+    {
+        if(dam == null)
+        {
+            gif.kacke = false;
+            waveMovment.brokenDam = true;
+        }        
     }
 
     void OnMouseDown()
@@ -27,7 +41,7 @@ public class DamGridScript : MonoBehaviour
         }
 
         GameObject damToBuild = BuildManager.instance.GetDam();
-        dam = (GameObject)Instantiate(damToBuild, transform.position, transform.rotation);
+        dam = (GameObject)Instantiate(prefab, transform.position, transform.rotation);
     }
 
     void OnMouseEnter()

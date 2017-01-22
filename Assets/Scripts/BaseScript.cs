@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseScript : MonoBehaviour
 {
-    float Health;
+    public float Health;
 
     // Use this for initialization
     void Start()
@@ -20,11 +20,11 @@ public class BaseScript : MonoBehaviour
             Destroy(this.gameObject);
         }
     }
-    void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Health -= 5;
+            Health -= 10;
         }
     }
 }

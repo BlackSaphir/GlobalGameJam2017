@@ -5,18 +5,24 @@ using UnityEngine;
 public class Gif : MonoBehaviour
 {
     public Animator animator;
-    public DamsScript Dam;
+    public DamsScript DamScript;
+    public GameObject Dam;
+
+    public bool kacke;
     // Use this for initialization
     void Start()
     {
+        kacke = true;
         animator = GetComponent<Animator>();
-        Dam = GetComponent<DamsScript>();
+        //Dam = GetComponent<GameObject>();
+        DamScript = Dam.GetComponent<DamsScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Dam.damBroken)
+        Debug.Log(kacke);
+        if (kacke == false)
         {
             animator.SetBool("existingDam", false);
         }

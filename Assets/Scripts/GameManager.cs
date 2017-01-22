@@ -14,19 +14,30 @@ public class GameManager : MonoBehaviour
     public int Waves;
     public int WaveLength;
     public Minion Minion;
-    private GameObject MinionPre;
     public GameObject MinionFish;
     public GameObject MinionTurtle;
     public GameObject MinionJellyFish;
     public GameObject MinionLaserShark;
-    
+    //public GameObject dam1;
+    //public GameObject dam2;
+    //public GameObject dam3;
+    //public GameObject prefab1;
+    //public GameObject prefab2;
+    //public GameObject prefab3;
+
+
     public GameObject Lane;
     public float SpawnTimer;
 
+    private GameObject MinionPre;
     float Lane1Timer;
     float Lane2Timer;
     float Lane3Timer;
     float Lane4Timer;
+
+    public DamGridScript damGrid1;
+    public DamGridScript damGrid2;
+    public DamGridScript damGrid3;
 
     // Use this for initialization
     void Start()
@@ -49,38 +60,35 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        WaveSpawnLane1();
-        //WaveSpawnLane2();
-        //WaveSpawnLane3();
-        //WaveSpawnLane4();
-        Lane1Timer += Time.deltaTime;
-        Lane2Timer += Time.deltaTime;
-        Lane3Timer += Time.deltaTime;
-        Lane4Timer += Time.deltaTime;
-        
-        PlayTime += Time.deltaTime;
-        PlayTime = Mathf.Round(PlayTime * 100.0f) / 100.0f;
-
-        if (PlayTime > 40.0f)
+        if (damGrid1.dam == null)
         {
             WaveSpawnLane2();
+            Lane2Timer += Time.deltaTime;
         }
 
-        if (PlayTime > 90.0f)
+        if (damGrid2.dam == null)
         {
             WaveSpawnLane3();
+            Lane3Timer += Time.deltaTime;
         }
 
-        if (PlayTime > 150.0f)
+        if (damGrid3.dam == null)
         {
             WaveSpawnLane4();
+            Lane4Timer += Time.deltaTime;
         }
+
+        WaveSpawnLane1();
+        Lane1Timer += Time.deltaTime;
+
+        PlayTime += Time.deltaTime;
+        PlayTime = Mathf.Round(PlayTime * 100.0f) / 100.0f;
     }
 
     void WaveSpawnLane1()
     {
         MinionPre = MinionFish;
-        Lane = GameObject.Find("Lane1");        
+        Lane = GameObject.Find("Lane1");
         if (Lane1Timer > 1.5f && MinionLane1Count < WaveLength)
         {
             GameObject temp = (GameObject)Instantiate(MinionPre, Lane.transform.position, Lane.transform.rotation);
@@ -93,13 +101,13 @@ public class GameManager : MonoBehaviour
     void WaveSpawnLane2()
     {
         MinionPre = MinionTurtle;
-        Lane = GameObject.Find("Lane2");        
+        Lane = GameObject.Find("Lane2");
         if (Lane2Timer > 2.0f && MinionLane2Count < WaveLength)
         {
             GameObject temp = (GameObject)Instantiate(MinionPre, Lane.transform.position, Lane.transform.rotation);
             temp.GetComponent<Minion>().Lane = GameObject.Find("Lane2");
             MinionLane2Count++;
-            Lane2Timer = 0;            
+            Lane2Timer = 0;
         }
     }
 
