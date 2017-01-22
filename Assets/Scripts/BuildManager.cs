@@ -36,4 +36,12 @@ public class BuildManager : MonoBehaviour {
     {
         return DamPrefab;
     }
+
+    public void SetTurretToBuild(string Turret)
+    {
+        if (Turret == "Standard")
+        {
+            buildTurret = standardTurret;
+        }
+    }
 }

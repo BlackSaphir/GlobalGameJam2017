@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Gold : MonoBehaviour
 {
-    public float Money;
+    public int Money;
     public Text displayMoney;
 
     // Use this for initialization
@@ -23,7 +23,7 @@ public class Gold : MonoBehaviour
 
     public void getMoney()
     {
-        Money += 0.5f;
+        Money += 20;
         displayMoney.text = "Gold " + Money.ToString();
     }
 }
