@@ -16,6 +16,8 @@ public class BuildManager : MonoBehaviour {
         instance = this;    
     }
 
+    public GameObject CatapultTurret;
+
     public GameObject standardTurret;
 
     public GameObject DamPrefab;
@@ -24,7 +26,7 @@ public class BuildManager : MonoBehaviour {
 
     void Start()
     {
-        buildTurret = standardTurret;
+        buildTurret = null;
     }
 
     public GameObject GetTurretToBuild()
@@ -42,6 +44,10 @@ public class BuildManager : MonoBehaviour {
         if (Turret == "Standard")
         {
             buildTurret = standardTurret;
+        }
+        if (Turret == "Catapult")
+        {
+            buildTurret = CatapultTurret;
         }
     }
 }

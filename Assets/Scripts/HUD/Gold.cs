@@ -7,11 +7,13 @@ public class Gold : MonoBehaviour
 {
     public int Money;
     public Text displayMoney;
+    public GameManager GMMoney;
 
     // Use this for initialization
     void Start()
     {
-        Money = 0;
+       
+        GMMoney.money = 100;
         InvokeRepeating("getMoney", 0.0f, 1.0f);
     }
 
@@ -23,7 +25,7 @@ public class Gold : MonoBehaviour
 
     public void getMoney()
     {
-        Money += 20;
-        displayMoney.text = "Gold " + Money.ToString();
+        GMMoney.money += 5;
+        displayMoney.text = "Gold " + GMMoney.money.ToString();
     }
 }

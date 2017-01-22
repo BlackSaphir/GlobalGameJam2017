@@ -6,12 +6,16 @@ using UnityEngine.UI;
 public class Button_One : MonoBehaviour
 {
     public Button ButtonOne;
-    Gold BuyMoney;
+    GameManager BuyMoney;
+
+    public int Cost;
 
     // Use this for initialization
     void Start()
     {
-        BuyMoney = GameObject.Find("Gold").GetComponent<Gold>();
+        BuyMoney = GameObject.FindObjectOfType<GameManager>();
+ 
+     
     }
 
     // Update is called once per frame
@@ -22,7 +26,7 @@ public class Button_One : MonoBehaviour
 
     public void ClickButton()
     {
-        if (BuyMoney.Money >= 100)
+        if (BuyMoney.money >= Cost)
         {
             ButtonOne.interactable = true;
         }

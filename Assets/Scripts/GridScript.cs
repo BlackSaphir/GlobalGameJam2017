@@ -11,8 +11,11 @@ public class GridScript : MonoBehaviour {
     private SpriteRenderer myRenderer;
     private Color normalColor;
 
+   public GameManager GM;
+
     void Start()
     {
+        GM = GameObject.FindObjectOfType<GameManager>();
         myRenderer = GetComponent<SpriteRenderer>();
         normalColor = myRenderer.color;
     }
@@ -27,6 +30,8 @@ public class GridScript : MonoBehaviour {
 
         GameObject turretToBuild = BuildManager.instance.GetTurretToBuild();
         turret = (GameObject)Instantiate(turretToBuild, transform.position, transform.rotation);
+
+        GM.money -= 100;    
     }
 
 	void OnMouseEnter()
