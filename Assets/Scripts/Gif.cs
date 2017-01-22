@@ -21,7 +21,6 @@ public class Gif : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(kacke);
         if (kacke == false)
         {
             animator.SetBool("existingDam", false);

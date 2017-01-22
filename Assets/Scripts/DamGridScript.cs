@@ -19,7 +19,7 @@ public class DamGridScript : MonoBehaviour
     {
         myRenderer = GetComponent<SpriteRenderer>();
         normalColor = myRenderer.color;
-        GameObject damToBuild = BuildManager.instance.GetDam();
+        //GameObject damToBuild = BuildManager.instance.GetDam();
         dam = (GameObject)Instantiate(prefab, transform.position, transform.rotation);
     }
 
@@ -28,7 +28,7 @@ public class DamGridScript : MonoBehaviour
         if(dam == null)
         {
             gif.kacke = false;
-            waveMovment.brokenDam = true;
+            //waveMovment.brokenDam = true;
         }        
     }
 
@@ -40,7 +40,7 @@ public class DamGridScript : MonoBehaviour
             return;
         }
 
-        GameObject damToBuild = BuildManager.instance.GetDam();
+        //GameObject damToBuild = BuildManager.instance.GetDam();
         dam = (GameObject)Instantiate(prefab, transform.position, transform.rotation);
     }
 

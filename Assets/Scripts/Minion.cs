@@ -34,6 +34,7 @@ public class Minion : MonoBehaviour
         MoveTo();
         if (health <= 0)
         {
+            gameManager.money += money;
             alive = false;
             Destroy(this.gameObject);
         }
@@ -45,7 +46,7 @@ public class Minion : MonoBehaviour
         {
             index++;
         }
-        transform.position = Vector2.MoveTowards(transform.position, Waypoints[index].transform.position, speed);
+        transform.position = Vector2.MoveTowards(transform.position, Waypoints[index].transform.position, speed * Time.deltaTime);
     }
 
     void OnTriggerEnter2D(Collider2D other)
