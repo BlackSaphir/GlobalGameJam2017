@@ -15,8 +15,7 @@ public class Minion : MonoBehaviour
     public GameObject Lane;
     // Use this for initialization
     void Start()
-    {
-        health = 100;
+    {       
         gameManager = FindObjectOfType<GameManager>();
         this.tag = "Enemy";
         alive = true;
@@ -47,6 +46,14 @@ public class Minion : MonoBehaviour
             index++;
         }
         transform.position = Vector2.MoveTowards(transform.position, Waypoints[index].transform.position, speed);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Base")
+        {
+            Destroy(gameObject);
+        }
     }
 
 }
