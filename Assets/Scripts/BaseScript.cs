@@ -5,11 +5,14 @@ using UnityEngine;
 public class BaseScript : MonoBehaviour
 {
     public float Health;
+    public GameObject MenuObject;
 
     // Use this for initialization
     void Start()
     {
+        MenuObject.SetActive(false);
         Health = 100;
+       
     }
 
     // Update is called once per frame
@@ -17,6 +20,8 @@ public class BaseScript : MonoBehaviour
     {
         if (Health <= 0)
         {
+            MenuObject.SetActive(true);
+            Time.timeScale = 0;
             Destroy(this.gameObject);
         }
     }
